@@ -1,0 +1,114 @@
+<title>Registration Form</title>
+<style>
+   .nameError,.emailError,.passwordError{
+      color:red;
+      display: none;
+   }
+
+   .container{
+      margin:30%;
+      padding:20px;
+      color:white;
+      display: block;
+      border-radius: 25px;
+      background-color:rgb(27, 29, 31) ;
+   }
+
+.form{
+   padding: 20px;
+   margin: 20px;
+   font-size: x-large;
+   color:white;
+   border-radius: 25px;
+   background-color: rgb(59, 64, 70);
+}
+
+.btn{
+   background-color: rgb(245, 5, 5);
+   color:white;
+   background-blend-mode: luminosity;
+}
+.bg{
+   border-width:2px;
+   border-radius: 25px;
+   backface-visibility: visible;
+   background-size: contain;
+}
+
+
+</style>
+
+<body  background="images/images.jpg" class="bg">
+<div class="container">
+     <h1> Registration Form</h1>
+   <form class="form">
+      <lable>Name</lable>
+      <input type="text" placeholder="Name" id="name"> <br>
+      <span class="nameError">Name must be contains only letter</span> <br>
+      <lable>Email Id</lable>
+      <input type="text" placeholder="email" id="email"> <br>
+      <span class="emailError">Email must be contains 8-15 characters</span> <br>
+      <lable>Password</lable>
+      <input type="text" placeholder="Password" id="psw"> <br>
+      <span class="PasswordError"> password does not valid</span>  <br>
+      <input type="submit" id="submit" class="btn">
+   </form>
+</div>
+</body>
+
+<script>
+   var submit = document.getElementById("submit")
+   submit.addEventListener("click", function(){ 
+      event.preventDefault()
+
+      var nameRegex = /^[a-zA-Z]+$/
+      var emailRegex =/^[a-zA-Z0-9]+@gmail\.com/
+      var passwordRegex=/^[a-zA-Z0-9]/
+
+
+      var name =document.getElementById("name")
+      var password =document.getElementById("psw")
+      var email =document.getElementById("email")
+
+   var validate =true
+
+      if(nameRegex.test(name.value) ==false)
+   {
+      document.querySelector(".nameError").style.display="inline"
+      validate=false
+
+   }
+   else{
+      document.querySelector(".nameError").style.display="none"
+   }
+
+
+   if(emailRegex.test(email.value) ==false)
+   {
+      document.querySelector(".emailError").style.display="inline"
+      validate=false
+   }
+   else{
+      document.querySelector(".emailError").style.display="none"
+   }
+
+
+   if(passwordRegex.test(psw.value) ==false)
+   {
+      document.querySelector(".passwordError").style.display="inline"
+      validate=false
+   }
+   else{
+      document.querySelector(".passwordError").style.display="none"
+   }
+
+   if(validate == true)
+   {
+      alert("Form Submitted Succesfully")
+   }
+
+
+   })
+
+
+</script>
